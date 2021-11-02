@@ -93,12 +93,12 @@ Tables
 		bigint  product_count                     true
 
 	2 manufactured
-		bigint manufacturer_id                    true        true                    true
+		bigint  manufacturer_id                   true        true                    true
 		varchar manufacturer_name                 true                    true
-		bigint manufacturer_country_id            true                                          Countries.country_id
+		bigint  manufacturer_country_id           true                                          Countries.country_id
 
 	3 countries
-		bigint country_id                         true        true                    true
+		bigint  country_id                        true        true                    true
 		varchar country_name                      true                    true
 
 ============================================================================================
