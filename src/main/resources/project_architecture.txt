@@ -45,14 +45,13 @@ Component of MODEL
 		String NAME
 		CountryEntity countryEntity;
 
-
 enum Category{...}
 
 MODEL:
 	Long id;
 	String name;
 	ManufacturedEntity manufacturedEntity;
-	Date refistrationDate;
+	Date registrationDate;
 	String category;
 	double price;
 	long count;
