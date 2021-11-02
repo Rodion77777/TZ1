@@ -83,7 +83,7 @@ MODEL:
 DATABASE
 
 Tables
-	1 products                                        NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
+	1 products                                      NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
 		bigint  product_id                        true        true                    true
 		varchar product_name                      true
 		bigint  product_manufacturer_id           true                                          Manufacturers.manufactured_id
