@@ -14,7 +14,7 @@ PROJECT ARCHITECTURE
 		->businessModelA
 		->businessModelN
 	|->modelService // many services which return businessModel or some fields from businessModel
-		->interface businessMidelService
+		->interface businessModelService
 		->businessModelServiceImpl
 
 |->domain
