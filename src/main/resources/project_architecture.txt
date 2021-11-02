@@ -85,7 +85,7 @@ DATABASE
 Tables
 	1 products                                      NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
 		bigint  product_id                        true        true                    true
-		varchar product_name                      true
+		varchar product_name                      true                    true
 		bigint  product_manufacturer_id           true                                          Manufacturers.manufactured_id
 		Date    product_manufacturer_date         true
 		varchar product_category                  true
