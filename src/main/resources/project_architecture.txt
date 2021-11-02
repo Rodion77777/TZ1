@@ -69,7 +69,6 @@ MODEL	ManufacturedEntity:
 		String NAME;  -------------------> @OneToMany -> products.MANUFACTURED
 		String COUNTRY;  ----------------> @ManyToOne -> country.NAME
 
-
 enum Category{...}
 
 MODEL:
