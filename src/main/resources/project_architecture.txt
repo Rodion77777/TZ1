@@ -83,23 +83,23 @@ MODEL:
 DATABASE
 
 Tables
-	1 products
-		bigint ID
-		varchar NAME
-		varchar MANUFACTURED
-		DateTime REGISTRATIONDATE
-		varchar CATEGORY
-		real PRICE
-		bigint COUNT
+	1 products                                  NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
+		bigint  product_id                        true        true                    true
+		varchar product_name                      true
+		bigint  product_manufacturer_id           true                                          Manufacturers.manufactured_id
+		Date    product_manufacturer_date         true
+		varchar product_category                  true
+		real    product_price                     true
+		bigint  product_count                     true
 
 	2 manufactured
-		bigint ID
-		varchar NAME
-		varchar COUNTRY
+		bigint manufacturer_id                    true        true                    true
+		varchar manufacturer_name                 true                    true
+		bigint manufacturer_country_id            true                                          Countries.country_id
 
-	3 country
-		bigint ID
-		varchar NAME
+	3 countries
+		bigint country_id                         true        true                    true
+		varchar country_name                      true                    true
 
 ============================================================================================
 
