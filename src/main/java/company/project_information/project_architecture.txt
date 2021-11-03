@@ -36,17 +36,17 @@ BUSINESS MODEL (BUSINESS level)
 
 Component of MANUFACTUREDENTITY
 	CountryEntity:
-		Long ID
+		long ID
 		String NAME
 
 Component of MODEL
 	ManufacturedEntity:
-		Long ID
+		long ID
 		String NAME
 		CountryEntity countryEntity;
 
 MODEL:
-	Long id;
+	long id;
 	String name;
 	ManufacturedEntity manufacturedEntity;
 	Date registrationDate;
@@ -58,11 +58,11 @@ MODEL:
 PRODUCT MODEL (DOMAIN level)
 
 MODEL	CountryEntity:
-		Long ID;
+		long ID;
 		String NAME;
 
 MODEL	ManufacturedEntity:
-		Long ID
+		long ID
 		String NAME;
 		Long COUNTRY_ID;  ----------------> @ManyToOne -> country.id
 
@@ -71,7 +71,7 @@ enum Countries{...}
 enum Manufacturers{...}
 
 MODEL:
-	Long id;
+	long id;
 	String name;
 	Long ManufacturedEntity.id  ------> @ManyToOne -> manufactured.id
 	Date registrationDate;
