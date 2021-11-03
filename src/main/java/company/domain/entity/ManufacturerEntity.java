@@ -1,6 +1,8 @@
 package company.domain.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -8,10 +10,22 @@ import java.util.Objects;
 public class ManufacturerEntity
 {
     private long manufacturerId;
+
     private String manufacturerName;
+
     private CountryEntity countriesByManufacturerCountryId;
 
+    @OneToMany
+    private List<ProductEntity> productEntityList;
+
     public ManufacturerEntity () {}
+
+    public ManufacturerEntity (String manufacturerName, CountryEntity countryEntity)
+    {
+        this.manufacturerName = manufacturerName;
+        this.countriesByManufacturerCountryId = countryEntity;
+        this.productEntityList = new ArrayList<>();
+    }
 
     @Id
     @Column(name = "manufacturer_id", nullable = false)
@@ -42,6 +56,23 @@ public class ManufacturerEntity
 
     public void setCountriesByManufacturerCountryId(CountryEntity countriesByManufacturerCountryId) {
         this.countriesByManufacturerCountryId = countriesByManufacturerCountryId;
+    }
+
+    public List<ProductEntity> getProductEntityList () {
+        return productEntityList;
+    }
+
+    public void setProductEntityList (List<ProductEntity> productEntityList) {
+        this.productEntityList = productEntityList;
+    }
+
+    public void addProductEntity (ProductEntity productEntity) {
+        productEntity.setManufacturersByProductManufacturerId(this);
+        this.productEntityList.add(productEntity);
+    }
+
+    public void removeProductEntity (ProductEntity productEntity) {
+        this.productEntityList.remove(productEntity);
     }
 
     @Override

@@ -60,11 +60,13 @@ PRODUCT MODEL (DOMAIN level)
 MODEL	CountryEntity:
 		long ID;
 		String NAME;
+		List<ManufacturedEntity> manufacturedEntityList; --> @OneToMany -> manufactured.id
 
 MODEL	ManufacturedEntity:
 		long ID
 		String NAME;
 		Long COUNTRY_ID;  ----------------> @ManyToOne -> country.id
+		List<ProductEntity> productEntityList; --> @OneToMany -> Product.id
 
 enum Category{...}
 enum Countries{...}
