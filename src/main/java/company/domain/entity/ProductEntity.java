@@ -1,7 +1,7 @@
 package company.domain.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -12,11 +12,21 @@ public class ProductEntity
     private String productName;
     private Date productManufacturerDate;
     private String productCategory;
-    private float productPrice;
+    private double productPrice;
     private long productCount;
     private ManufacturerEntity manufacturersByProductManufacturerId;
 
     public ProductEntity () {}
+
+    public ProductEntity (String productName, String productCategory, double productPrice, long productCount, ManufacturerEntity manufacturerEntity)
+    {
+        this.productName = productName;
+        this.productManufacturerDate = new Date();
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productCount = productCount;
+        this.manufacturersByProductManufacturerId = manufacturerEntity;
+    }
 
     @Id
     @Column(name = "product_id", nullable = false)
@@ -61,11 +71,11 @@ public class ProductEntity
 
     @Basic
     @Column(name = "product_price", nullable = false, precision = 0)
-    public float getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(float productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -94,7 +104,7 @@ public class ProductEntity
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductEntity that = (ProductEntity) o;
-        return productId == that.productId && Float.compare(that.productPrice, productPrice) == 0 && productCount == that.productCount && Objects.equals(productName, that.productName) && Objects.equals(productManufacturerDate, that.productManufacturerDate) && Objects.equals(productCategory, that.productCategory);
+        return productId == that.productId && Double.compare(that.productPrice, productPrice) == 0 && productCount == that.productCount && Objects.equals(productName, that.productName) && Objects.equals(productManufacturerDate, that.productManufacturerDate) && Objects.equals(productCategory, that.productCategory);
     }
 
     @Override
