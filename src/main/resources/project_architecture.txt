@@ -45,8 +45,6 @@ Component of MODEL
 		String NAME
 		CountryEntity countryEntity;
 
-enum Category{...}
-
 MODEL:
 	Long id;
 	String name;
@@ -69,6 +67,8 @@ MODEL	ManufacturedEntity:
 		String COUNTRY;  ----------------> @ManyToOne -> country.NAME
 
 enum Category{...}
+enum Countries{...}
+enum Manufacturers{...}
 
 MODEL:
 	Long id;
