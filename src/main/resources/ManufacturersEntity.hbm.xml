@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="company.domain.entity.ManufacturersEntity" table="manufacturers" schema="products_schema"
+           catalog="products_database">
+        <id name="manufacturerId">
+            <column name="manufacturer_id" sql-type="bigint"/>
+        </id>
+        <property name="manufacturerName">
+            <column name="manufacturer_name" sql-type="varchar"/>
+        </property>
+        <many-to-one name="countriesByManufacturerCountryId" class="company.domain.entity.CountriesEntity">
+            <column name="manufacturer_country_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
