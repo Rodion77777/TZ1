@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="company.domain.entity.CountryEntity" table="countries" schema="products_schema"
+           catalog="products_database">
+        <id name="countryId">
+            <column name="country_id" sql-type="bigint"/>
+        </id>
+        <property name="countryName">
+            <column name="country_name" sql-type="varchar"/>
+        </property>
+    </class>
+</hibernate-mapping>
