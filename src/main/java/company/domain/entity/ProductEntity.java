@@ -6,7 +6,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "products", schema = "products_schema", catalog = "products_database")
-public class ProductEntity {
+public class ProductEntity
+{
     private long productId;
     private String productName;
     private Date productManufacturerDate;
@@ -15,8 +16,11 @@ public class ProductEntity {
     private long productCount;
     private ManufacturerEntity manufacturersByProductManufacturerId;
 
+    public ProductEntity () {}
+
     @Id
     @Column(name = "product_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getProductId() {
         return productId;
     }
@@ -75,6 +79,16 @@ public class ProductEntity {
         this.productCount = productCount;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_manufacturer_id", referencedColumnName = "manufacturer_id", nullable = false)
+    public ManufacturerEntity getManufacturersByProductManufacturerId() {
+        return manufacturersByProductManufacturerId;
+    }
+
+    public void setManufacturersByProductManufacturerId(ManufacturerEntity manufacturersByProductManufacturerId) {
+        this.manufacturersByProductManufacturerId = manufacturersByProductManufacturerId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,15 +100,5 @@ public class ProductEntity {
     @Override
     public int hashCode() {
         return Objects.hash(productId, productName, productManufacturerDate, productCategory, productPrice, productCount);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "product_manufacturer_id", referencedColumnName = "manufacturer_id", nullable = false)
-    public ManufacturerEntity getManufacturersByProductManufacturerId() {
-        return manufacturersByProductManufacturerId;
-    }
-
-    public void setManufacturersByProductManufacturerId(ManufacturerEntity manufacturersByProductManufacturerId) {
-        this.manufacturersByProductManufacturerId = manufacturersByProductManufacturerId;
     }
 }

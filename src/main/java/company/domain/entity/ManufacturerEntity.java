@@ -5,13 +5,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "manufacturers", schema = "products_schema", catalog = "products_database")
-public class ManufacturerEntity {
+public class ManufacturerEntity
+{
     private long manufacturerId;
     private String manufacturerName;
     private CountryEntity countriesByManufacturerCountryId;
 
+    public ManufacturerEntity () {}
+
     @Id
     @Column(name = "manufacturer_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getManufacturerId() {
         return manufacturerId;
     }
@@ -30,6 +34,16 @@ public class ManufacturerEntity {
         this.manufacturerName = manufacturerName;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "country_id", nullable = false)
+    public CountryEntity getCountriesByManufacturerCountryId() {
+        return countriesByManufacturerCountryId;
+    }
+
+    public void setCountriesByManufacturerCountryId(CountryEntity countriesByManufacturerCountryId) {
+        this.countriesByManufacturerCountryId = countriesByManufacturerCountryId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,15 +55,5 @@ public class ManufacturerEntity {
     @Override
     public int hashCode() {
         return Objects.hash(manufacturerId, manufacturerName);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "country_id", nullable = false)
-    public CountryEntity getCountriesByManufacturerCountryId() {
-        return countriesByManufacturerCountryId;
-    }
-
-    public void setCountriesByManufacturerCountryId(CountryEntity countriesByManufacturerCountryId) {
-        this.countriesByManufacturerCountryId = countriesByManufacturerCountryId;
     }
 }

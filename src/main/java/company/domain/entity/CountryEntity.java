@@ -5,12 +5,16 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "countries", schema = "products_schema", catalog = "products_database")
-public class CountryEntity {
+public class CountryEntity
+{
     private long countryId;
     private String countryName;
 
+    public CountryEntity () {}
+
     @Id
     @Column(name = "country_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getCountryId() {
         return countryId;
     }
