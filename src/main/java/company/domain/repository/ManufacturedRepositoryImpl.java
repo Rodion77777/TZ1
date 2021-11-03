@@ -56,9 +56,9 @@ public class ManufacturedRepositoryImpl implements ManufacturedRepository
     @Override
     public List<ManufacturerEntity> findByCountryEntity(CountryEntity countryEntity) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<ManufacturerEntity> manufacturerEntityList = session.createQuery("from ManufacturerEntity where CountryEntity = :country_id").setParameter("country_id", countryEntity).getResultList();
+        List<ManufacturerEntity> manufacturerEntityList = session.createQuery("from ManufacturerEntity where CountryEntity = :countryEntity").setParameter("countryEntity", countryEntity).getResultList();
         session.close();
-        return null;
+        return manufacturerEntityList;
     }
 
     public void clearManufacturersTable ()
