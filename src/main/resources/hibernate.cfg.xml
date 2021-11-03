@@ -6,12 +6,12 @@
     <session-factory>
         <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <mapping resource="CountriesEntity.hbm.xml"/>
-        <mapping class="company.domain.entity.CountriesEntity"/>
-        <mapping resource="ManufacturersEntity.hbm.xml"/>
-        <mapping class="company.domain.entity.ManufacturersEntity"/>
-        <mapping resource="ProductsEntity.hbm.xml"/>
-        <mapping class="company.domain.entity.ProductsEntity"/>
+        <mapping resource="CountryEntity.hbm.xml"/>
+        <mapping class="company.domain.entity.CountryEntity"/>
+        <mapping resource="ManufacturerEntity.hbm.xml"/>
+        <mapping class="company.domain.entity.ManufacturerEntity"/>
+        <mapping resource="ProductEntity.hbm.xml"/>
+        <mapping class="company.domain.entity.ProductEntity"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

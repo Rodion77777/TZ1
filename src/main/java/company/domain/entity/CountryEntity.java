@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "countries", schema = "products_schema", catalog = "products_database")
-public class CountriesEntity {
+public class CountryEntity {
     private long countryId;
     private String countryName;
 
@@ -33,7 +33,7 @@ public class CountriesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CountriesEntity that = (CountriesEntity) o;
+        CountryEntity that = (CountryEntity) o;
         return countryId == that.countryId && Objects.equals(countryName, that.countryName);
     }
 

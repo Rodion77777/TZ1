@@ -6,14 +6,14 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "products", schema = "products_schema", catalog = "products_database")
-public class ProductsEntity {
+public class ProductEntity {
     private long productId;
     private String productName;
     private Date productManufacturerDate;
     private String productCategory;
     private float productPrice;
     private long productCount;
-    private ManufacturersEntity manufacturersByProductManufacturerId;
+    private ManufacturerEntity manufacturersByProductManufacturerId;
 
     @Id
     @Column(name = "product_id", nullable = false)
@@ -79,7 +79,7 @@ public class ProductsEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductsEntity that = (ProductsEntity) o;
+        ProductEntity that = (ProductEntity) o;
         return productId == that.productId && Float.compare(that.productPrice, productPrice) == 0 && productCount == that.productCount && Objects.equals(productName, that.productName) && Objects.equals(productManufacturerDate, that.productManufacturerDate) && Objects.equals(productCategory, that.productCategory);
     }
 
@@ -90,11 +90,11 @@ public class ProductsEntity {
 
     @ManyToOne
     @JoinColumn(name = "product_manufacturer_id", referencedColumnName = "manufacturer_id", nullable = false)
-    public ManufacturersEntity getManufacturersByProductManufacturerId() {
+    public ManufacturerEntity getManufacturersByProductManufacturerId() {
         return manufacturersByProductManufacturerId;
     }
 
-    public void setManufacturersByProductManufacturerId(ManufacturersEntity manufacturersByProductManufacturerId) {
+    public void setManufacturersByProductManufacturerId(ManufacturerEntity manufacturersByProductManufacturerId) {
         this.manufacturersByProductManufacturerId = manufacturersByProductManufacturerId;
     }
 }

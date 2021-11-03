@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="company.domain.entity.ProductsEntity" table="products" schema="products_schema"
+    <class name="company.domain.entity.ProductEntity" table="products" schema="products_schema"
            catalog="products_database">
         <id name="productId">
             <column name="product_id" sql-type="bigint"/>
@@ -24,7 +24,7 @@
         <property name="productCount">
             <column name="product_count" sql-type="bigint"/>
         </property>
-        <many-to-one name="manufacturersByProductManufacturerId" class="company.domain.entity.ManufacturersEntity">
+        <many-to-one name="manufacturersByProductManufacturerId" class="company.domain.entity.ManufacturerEntity">
             <column name="product_manufacturer_id"/>
         </many-to-one>
     </class>

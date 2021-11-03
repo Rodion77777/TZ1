@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="company.domain.entity.CountriesEntity" table="countries" schema="products_schema"
+    <class name="company.domain.entity.CountryEntity" table="countries" schema="products_schema"
            catalog="products_database">
         <id name="countryId">
             <column name="country_id" sql-type="bigint"/>

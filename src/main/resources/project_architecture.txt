@@ -83,21 +83,21 @@ MODEL:
 DATABASE
 
 Tables
-	1 products                                      NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
+	1 product                                      NotNull | Autoincrement | Unique | PrimaryKey | Foreign Key
 		bigint  product_id                        true        true                    true
 		varchar product_name                      true                    true
-		bigint  product_manufacturer_id           true                                          Manufacturers.manufactured_id
+		bigint  product_manufacturer_id           true                                          Manufacturer.manufactured_id
 		Date    product_manufacturer_date         true
 		varchar product_category                  true
 		real    product_price                     true
 		bigint  product_count                     true
 
-	2 manufactured
+	2 manufacture
 		bigint  manufacturer_id                   true        true                    true
 		varchar manufacturer_name                 true                    true
-		bigint  manufacturer_country_id           true                                          Countries.country_id
+		bigint  manufacturer_country_id           true                                          Country.country_id
 
-	3 countries
+	3 country
 		bigint  country_id                        true        true                    true
 		varchar country_name                      true                    true
 

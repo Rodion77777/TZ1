@@ -5,10 +5,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "manufacturers", schema = "products_schema", catalog = "products_database")
-public class ManufacturersEntity {
+public class ManufacturerEntity {
     private long manufacturerId;
     private String manufacturerName;
-    private CountriesEntity countriesByManufacturerCountryId;
+    private CountryEntity countriesByManufacturerCountryId;
 
     @Id
     @Column(name = "manufacturer_id", nullable = false)
@@ -34,7 +34,7 @@ public class ManufacturersEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ManufacturersEntity that = (ManufacturersEntity) o;
+        ManufacturerEntity that = (ManufacturerEntity) o;
         return manufacturerId == that.manufacturerId && Objects.equals(manufacturerName, that.manufacturerName);
     }
 
@@ -45,11 +45,11 @@ public class ManufacturersEntity {
 
     @ManyToOne
     @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "country_id", nullable = false)
-    public CountriesEntity getCountriesByManufacturerCountryId() {
+    public CountryEntity getCountriesByManufacturerCountryId() {
         return countriesByManufacturerCountryId;
     }
 
-    public void setCountriesByManufacturerCountryId(CountriesEntity countriesByManufacturerCountryId) {
+    public void setCountriesByManufacturerCountryId(CountryEntity countriesByManufacturerCountryId) {
         this.countriesByManufacturerCountryId = countriesByManufacturerCountryId;
     }
 }
