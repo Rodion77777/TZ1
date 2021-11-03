@@ -18,7 +18,7 @@ public class CountryEntity
     @Column(name = "country_name", nullable = false, length = -1)
     private String countryName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "countriesByManufacturerCountryId", cascade = CascadeType.ALL)
     private List<ManufacturerEntity> manufacturerEntityList;
 
     public CountryEntity () {}

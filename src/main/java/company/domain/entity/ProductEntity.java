@@ -90,7 +90,7 @@ public class ProductEntity
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_manufacturer_id", referencedColumnName = "manufacturer_id", nullable = false)
+    @JoinColumn(name = "product_manufacturer_id")
     public ManufacturerEntity getManufacturersByProductManufacturerId() {
         return manufacturersByProductManufacturerId;
     }

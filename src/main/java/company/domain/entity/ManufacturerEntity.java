@@ -15,7 +15,7 @@ public class ManufacturerEntity
 
     private CountryEntity countriesByManufacturerCountryId;
 
-    @OneToMany
+    @OneToMany(mappedBy = "manufacturersByProductManufacturerId", cascade = CascadeType.ALL)
     private List<ProductEntity> productEntityList;
 
     public ManufacturerEntity () {}
