@@ -1,4 +1,4 @@
-package company.domain.entity;
+package company.domain.components;
 
 public enum Manufacturers {
     AMD, INTEL, AMPERE, APPLE,

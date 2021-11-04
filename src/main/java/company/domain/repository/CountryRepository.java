@@ -1,5 +1,6 @@
 package company.domain.repository;
 
+
 import company.domain.entity.CountryEntity;
 
 import java.util.List;

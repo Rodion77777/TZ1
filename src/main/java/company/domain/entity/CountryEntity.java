@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "countries", schema = "products_schema", catalog = "products_database")
+@Table(name = "country", schema = "products_schema", catalog = "products_database")
 public class CountryEntity
 {
     @Id
@@ -18,14 +18,14 @@ public class CountryEntity
     @Column(name = "country_name", nullable = false, length = -1)
     private String countryName;
 
-    @OneToMany(mappedBy = "countriesByManufacturerCountryId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "countryEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ManufacturerEntity> manufacturerEntityList;
 
     public CountryEntity () {}
 
     public CountryEntity (String countryName) {
         this.countryName = countryName;
-        this.manufacturerEntityList = new ArrayList<>();
+        manufacturerEntityList = new ArrayList<>();
     }
 
     public long getCountryId() {
@@ -52,12 +52,11 @@ public class CountryEntity
         this.manufacturerEntityList = manufacturerEntityList;
     }
 
-    public void addManufacturer (ManufacturerEntity manufacturerEntity) {
-        manufacturerEntity.setCountriesByManufacturerCountryId(this);
-        this.manufacturerEntityList.add(manufacturerEntity);
+    public void addManufacturerEntity (ManufacturerEntity manufacturerEntity) {
+        manufacturerEntityList.add(manufacturerEntity);
     }
 
-    public void removeManufacturer (ManufacturerEntity manufacturerEntity) {
+    public void removeManufacturerEntity (ManufacturerEntity manufacturerEntity) {
         manufacturerEntityList.remove(manufacturerEntity);
     }
 

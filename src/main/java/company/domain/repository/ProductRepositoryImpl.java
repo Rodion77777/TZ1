@@ -49,7 +49,7 @@ public class ProductRepositoryImpl implements ProductRepository
     @Override
     public List<ProductEntity> findAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<ProductEntity> productEntityList = session.createQuery("from ProductEntity").list();
+        List<ProductEntity> productEntityList = session.createQuery("from ProductEntity ").list();
         session.close();
         return productEntityList;
     }

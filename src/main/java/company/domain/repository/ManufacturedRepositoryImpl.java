@@ -48,7 +48,7 @@ public class ManufacturedRepositoryImpl implements ManufacturedRepository
     @Override
     public List<ManufacturerEntity> findAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<ManufacturerEntity> manufacturerEntityList = session.createQuery("from ManufacturerEntity").list();
+        List<ManufacturerEntity> manufacturerEntityList = session.createQuery("from ManufacturerEntity ").list();
         session.close();
         return manufacturerEntityList;
     }
@@ -65,7 +65,7 @@ public class ManufacturedRepositoryImpl implements ManufacturedRepository
     {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.createQuery("delete ManufacturerEntity").executeUpdate();
+        session.createQuery("delete ManufacturerEntity ").executeUpdate();
         transaction.commit();
         session.close();
     }

@@ -53,7 +53,7 @@ public class CountryRepositoryImpl implements CountryRepository
     public List<CountryEntity> findAll()
     {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<CountryEntity> countryEntityList = session.createQuery("from CountryEntity").list();
+        List<CountryEntity> countryEntityList = session.createQuery("from CountryEntity ").list();
         session.close();
         return countryEntityList;
     }
@@ -62,7 +62,7 @@ public class CountryRepositoryImpl implements CountryRepository
     {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.createQuery("delete CountryEntity").executeUpdate();
+        session.createQuery("delete CountryEntity ").executeUpdate();
         transaction.commit();
         session.close();
     }
