@@ -94,7 +94,7 @@ public class HibernateApplication {
         productEntityList.add(RYZEN_5);
     }
 
-
+    public void show () {}
 
     public void clearDB ()
     {
