@@ -37,7 +37,7 @@ public class HibernateApplication {
 
     public void run ()
     {
-        //createObjects();
+        createObjects();
         new Show().inConsole.showAllTable();
         //hardReset();
     }
