@@ -79,6 +79,14 @@ public class HibernateApplication {
                 3100, 1, AMD);
         AMD.addProductEntity(RYZEN_5);
 
+        ManufacturerEntity INTEL = new ManufacturerEntity(Manufacturers.INTEL.toString(), USA);
+
+        ProductEntity ALDER_LAKE = new ProductEntity(
+                Processors.ALDER_LAKE_12900K.toString(),
+                Category.PROCESSOR.toString(),
+                15600.1, 1, INTEL);
+        INTEL.addProductEntity(ALDER_LAKE);
+
         out.println("Object creation successfully completed!");
 
         countryEntityList.add(TAIWAN);
