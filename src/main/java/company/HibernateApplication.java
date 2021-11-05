@@ -37,9 +37,9 @@ public class HibernateApplication {
 
     public void run ()
     {
-        //createObjects();
+        createObjects();
         new Show().inConsole.showAllTable();
-        //clearDB();
+        clearDB();
     }
 
     public void createObjects ()
@@ -97,8 +97,6 @@ public class HibernateApplication {
         productEntityList.add(RYZEN_9);
         productEntityList.add(RYZEN_5);
     }
-
-
 
     public void clearDB ()
     {
