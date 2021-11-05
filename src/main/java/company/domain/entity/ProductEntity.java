@@ -27,7 +27,7 @@ public class ProductEntity
 
     @Basic
     @Column(name = "product_price", nullable = false, precision = 0)
-    private float productPrice;
+    private double productPrice;
 
     @Basic
     @Column(name = "product_count", nullable = false)
@@ -38,10 +38,10 @@ public class ProductEntity
     private ManufacturerEntity manufacturerEntity;
 
     public ProductEntity () {}
-    public ProductEntity (String productName, String productCategory, float productPrice, long productCount, ManufacturerEntity manufacturerEntity)
+    public ProductEntity (String productName, String productCategory, double productPrice, long productCount, ManufacturerEntity manufacturerEntity)
     {
         this.productName = productName;
-        this.productManufacturerDate = new Date(new java.util.Date().getDate());
+        this.productManufacturerDate = new Date(new java.util.Date().getTime());
         this.productCategory = productCategory;
         this.productPrice = productPrice;
         this.productCount = productCount;
@@ -80,7 +80,7 @@ public class ProductEntity
         this.productCategory = productCategory;
     }
 
-    public float getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
@@ -109,7 +109,7 @@ public class ProductEntity
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductEntity that = (ProductEntity) o;
-        return productId == that.productId && Float.compare(that.productPrice, productPrice) == 0 && productCount == that.productCount && Objects.equals(productName, that.productName) && Objects.equals(productManufacturerDate, that.productManufacturerDate) && Objects.equals(productCategory, that.productCategory);
+        return productId == that.productId && Double.compare(that.productPrice, productPrice) == 0 && productCount == that.productCount && Objects.equals(productName, that.productName) && Objects.equals(productManufacturerDate, that.productManufacturerDate) && Objects.equals(productCategory, that.productCategory);
     }
 
     @Override

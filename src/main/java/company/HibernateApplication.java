@@ -37,9 +37,9 @@ public class HibernateApplication {
 
     public void run ()
     {
-        createObjects();
+        //createObjects();
         new Show().inConsole.showAllTable();
-        clearDB();
+        //hardReset();
     }
 
     public void createObjects ()
@@ -52,13 +52,13 @@ public class HibernateApplication {
         ProductEntity CROSSHAIR = new ProductEntity(
                 Motherboards.ROG_CROSSHAIR_IIIV.toString(),
                 Category.MOTHERBOARD.toString(),
-                13000, 1, ASUS);
+                13000.1, 1, ASUS);
         ASUS.addProductEntity(CROSSHAIR);
 
         ProductEntity PRIME = new ProductEntity(
                 Motherboards.PRIME_X370_PRO.toString(),
                 Category.MOTHERBOARD.toString(),
-                3400, 1, ASUS);
+                3400.5, 1, ASUS);
         ASUS.addProductEntity(PRIME);
 
         CountryEntity USA = new CountryEntity(Countries.USA.toString());
@@ -83,10 +83,6 @@ public class HibernateApplication {
         countryRepository.save(USA);
         manufacturedRepository.save(ASUS);
         manufacturedRepository.save(AMD);
-        //productRepository.save(CROSSHAIR); // порождает ошибку - такой обьект уже есть
-        //productRepository.save(PRIME);
-        //productRepository.save(RYZEN_9);
-        //productRepository.save(RYZEN_5);
         out.println("Database entry completed!");
 
         countryEntityList.add(TAIWAN);
@@ -98,7 +94,7 @@ public class HibernateApplication {
         productEntityList.add(RYZEN_5);
     }
 
-    public void clearDB ()
+    public void hardReset()
     {
         countryRepository.clearCountriesTable();
         manufacturedRepository.clearManufacturersTable();
