@@ -22,7 +22,7 @@ public class ManufacturerEntity
     @JoinColumn(name = "manufacturer_country_id")
     private CountryEntity countryEntity;
 
-    @OneToMany(mappedBy = "manufacturerEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "manufacturerEntity")
     private List<ProductEntity> productEntityList;
 
     public ManufacturerEntity () {}

@@ -11,8 +11,8 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-public class Show {
-
+public class Show
+{
     private final CountryRepositoryImpl countryRepository;
     private final ManufacturedRepositoryImpl manufacturedRepository;
     private final ProductRepositoryImpl productRepository;
@@ -62,7 +62,7 @@ public class Show {
                 out.printf("|%21d |%30s |%21d |\n",
                         me.getManufacturerId(),
                         me.getManufacturerName(),
-                        me.getCountryEntity().getCountryId());
+                        me.getCountryEntity() == null ? -1 : me.getCountryEntity().getCountryId());
             }
 
             out.println(doubleLine);
@@ -82,7 +82,7 @@ public class Show {
                 out.printf("|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n",
                         pe.getProductId(),
                         pe.getProductName(),
-                        pe.getManufacturerEntity().getManufacturerId(),
+                        pe.getManufacturerEntity() == null ? -1 : pe.getManufacturerEntity().getManufacturerId(),
                         pe.getProductManufacturerDate(),
                         pe.getProductCategory(),
                         pe.getProductPrice(),

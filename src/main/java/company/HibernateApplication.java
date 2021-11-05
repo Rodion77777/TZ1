@@ -9,6 +9,7 @@ import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
 import company.domain.repository.*;
+import company.util.Saver;
 import company.util.Show;
 
 import java.util.ArrayList;
@@ -38,8 +39,10 @@ public class HibernateApplication {
     public void run ()
     {
         createObjects();
+        new Saver().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
+        manufacturedRepository.delete(manufacturerEntityList.get(1));
         new Show().inConsole.showAllTable();
-        //hardReset();
+        hardReset();
     }
 
     public void createObjects ()
@@ -78,18 +81,12 @@ public class HibernateApplication {
 
         out.println("Object creation successfully completed!");
 
-        out.println("Recording of objects in the database...");
-        countryRepository.save(TAIWAN);
-        countryRepository.save(USA);
-        manufacturedRepository.save(ASUS);
-        manufacturedRepository.save(AMD);
-        out.println("Database entry completed!");
-
         countryEntityList.add(TAIWAN);
         countryEntityList.add(USA);
         manufacturerEntityList.add(ASUS);
         manufacturerEntityList.add(AMD);
         productEntityList.add(CROSSHAIR);
+        productEntityList.add(PRIME);
         productEntityList.add(RYZEN_9);
         productEntityList.add(RYZEN_5);
     }
