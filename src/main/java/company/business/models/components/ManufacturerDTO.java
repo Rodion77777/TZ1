@@ -1,12 +1,12 @@
 package company.business.models.components;
 
-public class ManufacturedDTO
+public class ManufacturerDTO
 {
     private final long id;
     private final String name;
     private final CountryDTO countryDTO;
 
-    public ManufacturedDTO (long id, String name, CountryDTO countryDTO)
+    public ManufacturerDTO(long id, String name, CountryDTO countryDTO)
     {
         this.id = id;
         this.name = name;

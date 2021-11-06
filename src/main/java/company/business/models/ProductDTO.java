@@ -1,21 +1,20 @@
 package company.business.models;
 
-import company.business.models.components.CategoryDTO;
-import company.business.models.components.ManufacturedDTO;
+import company.business.models.components.ManufacturerDTO;
 
 import java.sql.Date;
 
 public class ProductDTO
 {
     private final long id;
-    private final String name;
+    private final java.lang.String name;
     private final Date manufacturerDate;
-    private final ManufacturedDTO manufacturedDTO;
-    private final CategoryDTO categoryDTO;
+    private final ManufacturerDTO manufacturedDTO;
+    private final String categoryDTO;
     private final double price;
     private final long count;
 
-    public ProductDTO(long id, String name, Date manufacturerDate, ManufacturedDTO manufacturedDTO, CategoryDTO categoryDTO, double price, long count) {
+    public ProductDTO(long id, java.lang.String name, Date manufacturerDate, ManufacturerDTO manufacturedDTO, String categoryDTO, double price, long count) {
         this.id = id;
         this.name = name;
         this.manufacturerDate = manufacturerDate;
@@ -29,7 +28,7 @@ public class ProductDTO
         return id;
     }
 
-    public String getName() {
+    public java.lang.String getName() {
         return name;
     }
 
@@ -37,11 +36,11 @@ public class ProductDTO
         return manufacturerDate;
     }
 
-    public ManufacturedDTO getManufacturedDTO() {
+    public ManufacturerDTO getManufacturedDTO() {
         return manufacturedDTO;
     }
 
-    public CategoryDTO getCategoryDTO() {
+    public String getCategoryDTO() {
         return categoryDTO;
     }
 
