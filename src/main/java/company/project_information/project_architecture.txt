@@ -48,7 +48,7 @@ Component of MODEL
 MODEL:
 	long id;
 	String name;
-	ManufacturedEntity manufacturedEntity;
+	ManufacturedEntity me;
 	Date registrationDate;
 	String category;
 	double price;
@@ -65,7 +65,7 @@ MODEL	CountryEntity:
 MODEL	ManufacturedEntity:
 		long ID
 		String NAME;
-		Long COUNTRY_ID;  ----------------> @ManyToOne -> country.id
+		CountryEntity ce  ----------------> @ManyToOne -> country.id
 		List<ProductEntity> productEntityList; --> @OneToMany -> Product.id
 
 enum Category{...}
@@ -75,7 +75,7 @@ enum Manufacturers{...}
 MODEL:
 	long id;
 	String name;
-	Long ManufacturedEntity.id  ------> @ManyToOne -> manufactured.id
+	ManufacturerEntity me  ------> @ManyToOne -> manufactured.id
 	Date registrationDate;
 	String category;
 	double price;

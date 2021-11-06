@@ -27,9 +27,9 @@ public class ClearManager
         {
             out.println("All tables cleanup start...");
 
-            countryRepository.clearCountriesTable();
-            manufacturedRepository.clearManufacturersTable();
-            productRepository.clearProductsTable();
+            clearCountryTable();
+            clearManufactureTable();
+            clearProductTable();
 
             out.println("All tables have been cleared.");
         }
