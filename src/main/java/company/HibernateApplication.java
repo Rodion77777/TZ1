@@ -41,9 +41,9 @@ public class HibernateApplication {
     {
         createObjects();
         new SaveManager().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
-        new ShowManager().inConsole.showAllTable();
-        new ClearManager().clearDatabase.clearAllTables();
-        clearAllEntityList();
+        //new ShowManager().inConsole.showAllTable();
+        //new ClearManager().clearDatabase.clearAllTables();
+        //clearAllEntityList();
     }
 
     public void createObjects ()

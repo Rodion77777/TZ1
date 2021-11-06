@@ -4,9 +4,11 @@ import company.domain.entity.CountryEntity;
 import company.util.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CountryRepositoryImpl implements CountryRepository
 {
 
