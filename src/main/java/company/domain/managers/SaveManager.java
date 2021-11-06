@@ -1,4 +1,4 @@
-package company.util;
+package company.domain.managers;
 
 import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
@@ -11,14 +11,14 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-public class Saver
+public class SaveManager
 {
     private final CountryRepositoryImpl countryRepository;
     private final ManufacturedRepositoryImpl manufacturedRepository;
     private final ProductRepositoryImpl productRepository;
     public final InDatabase inDatabase;
 
-    public Saver ()
+    public SaveManager ()
     {
         this.countryRepository = new CountryRepositoryImpl();
         this.manufacturedRepository = new ManufacturedRepositoryImpl();

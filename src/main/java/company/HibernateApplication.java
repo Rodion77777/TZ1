@@ -8,9 +8,10 @@ import company.domain.configuration.Processors;
 import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
+import company.domain.managers.ClearManager;
 import company.domain.repository.*;
-import company.util.Saver;
-import company.util.Show;
+import company.domain.managers.SaveManager;
+import company.domain.managers.ShowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +40,10 @@ public class HibernateApplication {
     public void run ()
     {
         createObjects();
-        new Saver().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
-        //manufacturedRepository.delete(manufacturerEntityList.get(1));
-        countryRepository.delete(countryEntityList.get(0));
-        new Show().inConsole.showAllTable();
-        clearAllTable();
+        new SaveManager().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
+        new ShowManager().inConsole.showAllTable();
+        new ClearManager().clearDatabase.clearAllTables();
+        clearAllEntityList();
     }
 
     public void createObjects ()
@@ -102,11 +102,8 @@ public class HibernateApplication {
         productEntityList.add(ALDER_LAKE);
     }
 
-    public void clearAllTable()
+    public void clearAllEntityList ()
     {
-        countryRepository.clearCountriesTable();
-        manufacturedRepository.clearManufacturersTable();
-        productRepository.clearProductsTable();
         countryEntityList = null;
         manufacturerEntityList = null;
         productEntityList = null;
