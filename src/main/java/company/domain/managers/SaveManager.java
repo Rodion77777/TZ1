@@ -41,27 +41,29 @@ public class SaveManager
 
         public void saveCountries (List<CountryEntity> countryEntityList)
         {
-            for (int i = 0; i < countryEntityList.size(); i++)
+            for (CountryEntity ce : countryEntityList)
             {
-                countryRepository.save(countryEntityList.get(i));
+                countryRepository.save(ce);
             }
             out.println("Countries successfully recorded.");
         }
 
         public void saveManufacturers (List<ManufacturerEntity> manufacturerEntityList)
         {
-            for (int i = 0; i < manufacturerEntityList.size(); i++)
+            for (ManufacturerEntity me : manufacturerEntityList)
             {
-                manufacturedRepository.save(manufacturerEntityList.get(i));
+                manufacturedRepository.save(me);
             }
             out.println("Manufacturers successfully recorded.");
+
+
         }
 
         public void saveProducts (List<ProductEntity> productEntityList)
         {
-            for (int i = 0; i < productEntityList.size(); i++)
+            for (ProductEntity pe : productEntityList)
             {
-                productRepository.save(productEntityList.get(i));
+                productRepository.save(pe);
             }
             out.println("Products successfully recorded.");
         }
