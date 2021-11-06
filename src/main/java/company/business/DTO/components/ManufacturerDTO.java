@@ -1,4 +1,4 @@
-package company.business.models.components;
+package company.business.DTO.components;
 
 public class ManufacturerDTO
 {

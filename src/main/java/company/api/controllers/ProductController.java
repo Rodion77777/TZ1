@@ -1,6 +1,6 @@
 package company.api.controllers;
 
-import company.business.models.ProductDTO;
+import company.business.DTO.ProductDTO;
 import company.business.services.ProductService;
 import company.domain.entity.ProductEntity;
 import company.domain.repository.ProductRepositoryImpl;

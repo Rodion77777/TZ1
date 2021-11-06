@@ -1,6 +1,6 @@
 package company.business.services;
 
-import company.business.models.ProductDTO;
+import company.business.DTO.ProductDTO;
 
 import java.util.List;
 

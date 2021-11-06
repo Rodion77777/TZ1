@@ -1,8 +1,8 @@
 package company.business.services;
 
-import company.business.models.ProductDTO;
-import company.business.models.components.CountryDTO;
-import company.business.models.components.ManufacturerDTO;
+import company.business.DTO.ProductDTO;
+import company.business.DTO.components.CountryDTO;
+import company.business.DTO.components.ManufacturerDTO;
 import company.domain.repository.ProductRepository;
 import org.springframework.stereotype.Component;
 

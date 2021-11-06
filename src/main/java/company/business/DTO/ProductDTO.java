@@ -1,6 +1,6 @@
-package company.business.models;
+package company.business.DTO;
 
-import company.business.models.components.ManufacturerDTO;
+import company.business.DTO.components.ManufacturerDTO;
 
 import java.sql.Date;
 
