@@ -40,9 +40,10 @@ public class HibernateApplication {
     {
         createObjects();
         new Saver().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
-        manufacturedRepository.delete(manufacturerEntityList.get(1));
+        //manufacturedRepository.delete(manufacturerEntityList.get(1));
+        countryRepository.delete(countryEntityList.get(0));
         new Show().inConsole.showAllTable();
-        hardReset();
+        clearAllTable();
     }
 
     public void createObjects ()
@@ -93,13 +94,15 @@ public class HibernateApplication {
         countryEntityList.add(USA);
         manufacturerEntityList.add(ASUS);
         manufacturerEntityList.add(AMD);
+        manufacturerEntityList.add(INTEL);
         productEntityList.add(CROSSHAIR);
         productEntityList.add(PRIME);
         productEntityList.add(RYZEN_9);
         productEntityList.add(RYZEN_5);
+        productEntityList.add(ALDER_LAKE);
     }
 
-    public void hardReset()
+    public void clearAllTable()
     {
         countryRepository.clearCountriesTable();
         manufacturedRepository.clearManufacturersTable();
