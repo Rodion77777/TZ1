@@ -4,20 +4,24 @@ import company.business.models.ProductDTO;
 import company.business.models.components.CountryDTO;
 import company.business.models.components.ManufacturerDTO;
 import company.domain.repository.ProductRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ProductServiceImpl implements ProductService
 {
     private ProductRepository productRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl (ProductRepository productRepository)
+    {
         this.productRepository = productRepository;
     }
 
     @Override
-    public List<ProductDTO> getProducts() {
+    public List<ProductDTO> getAllProducts()
+    {
         return productRepository
                 .findAll()
                 .stream().map(p -> new ProductDTO(
