@@ -1,5 +1,6 @@
 package company.domain.managers;
 
+import company.business.DTO.ProductDTO;
 import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
@@ -135,6 +136,28 @@ public class ShowManager
                     productEntity.getProductCategory(),
                     productEntity.getProductPrice(),
                     productEntity.getProductCount());
+
+            out.println(doubleLine);
+        }
+
+        public void showThis (ProductDTO productDTO)
+        {
+            String doubleLine = "=".repeat(168);
+
+            out.printf("%s\n| %-165s|\n%s\n", doubleLine, "PRODUCT TABLE", doubleLine);
+            out.printf("|%21s |%30s |%21s |%11s |%20s |%20s |%20s |%8s |\n",
+                    "ID", "NAME", "MANUF_NAME", "MANUF_DATE", "COUNTRY_NAME", "CATEGORY", "PRICE", "COUNT");
+            out.println(doubleLine);
+
+            out.printf("|%21d |%30s |%21s |%11s |%20s |%20s |%20.2f |%8d |\n",
+                    productDTO.getId(),
+                    productDTO.getName(),
+                    productDTO.getManufacturedDTO() == null ? -1 : productDTO.getManufacturedDTO().getName(),
+                    productDTO.getManufacturerDate(),
+                    productDTO.getManufacturedDTO().getCountryDTO().getName(),
+                    productDTO.getCategoryDTO(),
+                    productDTO.getPrice(),
+                    productDTO.getCount());
 
             out.println(doubleLine);
         }
