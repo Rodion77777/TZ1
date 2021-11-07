@@ -91,5 +91,52 @@ public class ShowManager
 
             out.println(doubleLine);
         }
+
+        public void showThis (CountryEntity countryEntity)
+        {
+            String doubleLine = "=".repeat(56);
+
+            out.printf("%s\n| %-53s|\n%s\n", doubleLine, "COUNTRY ENTITY", doubleLine);
+            out.printf("|%21s |%30s |\n%s\n", "ID", "NAME", doubleLine);
+            out.printf("|%21s |%30s |\n", countryEntity.getCountryId(), countryEntity.getCountryName());
+
+            out.println(doubleLine);
+        }
+
+        public void showThis (ManufacturerEntity manufacturerEntity)
+        {
+            String doubleLine = "=".repeat(79);
+
+            out.printf("%s\n| %-76s|\n%s\n", doubleLine, "MANUFACTURER ENTITY", doubleLine);
+            out.printf("|%21s |%30s |%21s |\n%s\n", "ID", "NAME", "COUNTRY_ID", doubleLine);
+
+            out.printf("|%21d |%30s |%21d |\n",
+                    manufacturerEntity.getManufacturerId(),
+                    manufacturerEntity.getManufacturerName(),
+                    manufacturerEntity.getCountryEntity() == null ? -1 : manufacturerEntity.getCountryEntity().getCountryId());
+
+            out.println(doubleLine);
+        }
+
+        public void showThis (ProductEntity productEntity)
+        {
+            String doubleLine = "=".repeat(146);
+
+            out.printf("%s\n| %-143s|\n%s\n", doubleLine, "PRODUCT TABLE", doubleLine);
+            out.printf("|%21s |%30s |%21s |%11s |%20s |%20s |%8s |\n",
+                    "ID", "NAME", "MANUF_ID", "MANUF_DATE", "CATEGORY", "PRICE", "COUNT");
+            out.println(doubleLine);
+
+            out.printf("|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n",
+                    productEntity.getProductId(),
+                    productEntity.getProductName(),
+                    productEntity.getManufacturerEntity() == null ? -1 : productEntity.getManufacturerEntity().getManufacturerId(),
+                    productEntity.getProductManufacturerDate(),
+                    productEntity.getProductCategory(),
+                    productEntity.getProductPrice(),
+                    productEntity.getProductCount());
+
+            out.println(doubleLine);
+        }
     }
 }
