@@ -3,6 +3,7 @@ package company.business.services;
 import company.business.DTO.ProductDTO;
 import company.business.DTO.components.CountryDTO;
 import company.business.DTO.components.ManufacturerDTO;
+import company.domain.entity.ProductEntity;
 import company.domain.repository.ProductRepository;
 import org.springframework.stereotype.Component;
 
@@ -41,4 +42,30 @@ public class ProductServiceImpl implements ProductService
                         p.getProductCount()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ProductDTO getProductDTO ()
+    {
+        ProductEntity pe = productRepository.findAll().get(0);
+
+        CountryDTO countryDTO = new CountryDTO(
+                pe.getManufacturerEntity().getCountryEntity().getCountryId(),
+                pe.getManufacturerEntity().getCountryEntity().getCountryName());
+
+        ManufacturerDTO manufacturerDTO = new ManufacturerDTO(
+                pe.getManufacturerEntity().getManufacturerId(),
+                pe.getManufacturerEntity().getManufacturerName(),
+                countryDTO);
+
+        return new ProductDTO(
+                pe.getProductId(),
+                pe.getProductName(),
+                pe.getProductManufacturerDate(),
+                manufacturerDTO,
+                pe.getProductCategory(),
+                pe.getProductPrice(),
+                pe.getProductCount());
+    }
+
+
 }
