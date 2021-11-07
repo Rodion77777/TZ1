@@ -144,7 +144,7 @@ public class ShowManager
         {
             String doubleLine = "=".repeat(168);
 
-            out.printf("%s\n| %-165s|\n%s\n", doubleLine, "PRODUCT TABLE", doubleLine);
+            out.printf("%s\n| %-165s|\n%s\n", doubleLine, "PRODUCT DTO", doubleLine);
             out.printf("|%21s |%30s |%21s |%11s |%20s |%20s |%20s |%8s |\n",
                     "ID", "NAME", "MANUF_NAME", "MANUF_DATE", "COUNTRY_NAME", "CATEGORY", "PRICE", "COUNT");
             out.println(doubleLine);
@@ -158,6 +158,31 @@ public class ShowManager
                     productDTO.getCategoryDTO(),
                     productDTO.getPrice(),
                     productDTO.getCount());
+
+            out.println(doubleLine);
+        }
+
+        public void showThis (List<ProductDTO> productDTOList)
+        {
+            String doubleLine = "=".repeat(168);
+
+            out.printf("%s\n| %-165s|\n%s\n", doubleLine, "PRODUCT DTO", doubleLine);
+            out.printf("|%21s |%30s |%21s |%11s |%20s |%20s |%20s |%8s |\n",
+                    "ID", "NAME", "MANUF_NAME", "MANUF_DATE", "COUNTRY_NAME", "CATEGORY", "PRICE", "COUNT");
+            out.println(doubleLine);
+
+            for (ProductDTO productDTO : productDTOList)
+            {
+                out.printf("|%21d |%30s |%21s |%11s |%20s |%20s |%20.2f |%8d |\n",
+                        productDTO.getId(),
+                        productDTO.getName(),
+                        productDTO.getManufacturedDTO() == null ? -1 : productDTO.getManufacturedDTO().getName(),
+                        productDTO.getManufacturerDate(),
+                        productDTO.getManufacturedDTO().getCountryDTO().getName(),
+                        productDTO.getCategoryDTO(),
+                        productDTO.getPrice(),
+                        productDTO.getCount());
+            }
 
             out.println(doubleLine);
         }
