@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService
     @Override
     public ProductDTO getProductDTO ()
     {
-        ProductEntity pe = productRepository.findAll().get(0);
+        ProductEntity pe = productRepository.findById(180);
 
         CountryDTO countryDTO = new CountryDTO(
                 pe.getManufacturerEntity().getCountryEntity().getCountryId(),
