@@ -9,11 +9,13 @@ public class ManufacturerManager
 {
     private final ManufacturedRepositoryImpl manufacturedRepository;
     private final String doubleLine;
+    private final String sequence;
 
     public ManufacturerManager ()
     {
         this.manufacturedRepository = new ManufacturedRepositoryImpl();
         this.doubleLine = "=".repeat(79);
+        this.sequence = "|%21d |%30s |%21d |\n";
     }
 
     private void tableHeader ()
@@ -26,7 +28,7 @@ public class ManufacturerManager
     {
         tableHeader();
 
-        out.printf("|%21d |%30s |%21d |\n",
+        out.printf(sequence,
                 manufacturerEntity.getManufacturerId(),
                 manufacturerEntity.getManufacturerName(),
                 manufacturerEntity.getCountryEntity() == null ? -1 : manufacturerEntity.getCountryEntity().getCountryId());
@@ -39,7 +41,7 @@ public class ManufacturerManager
         tableHeader();
 
         for (ManufacturerEntity me : manufacturerEntityList) {
-            out.printf("|%21d |%30s |%21d |\n",
+            out.printf(sequence,
                     me.getManufacturerId(),
                     me.getManufacturerName(),
                     me.getCountryEntity() == null ? -1 : me.getCountryEntity().getCountryId());

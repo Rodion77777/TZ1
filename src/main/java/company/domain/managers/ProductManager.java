@@ -9,11 +9,13 @@ public class ProductManager
 {
     private final ProductRepositoryImpl productRepository;
     private final String doubleLine;
+    private final String sequence;
 
     public ProductManager ()
     {
         this.productRepository = new ProductRepositoryImpl();
         this.doubleLine = "=".repeat(146);
+        this.sequence = "|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n";
     }
 
     private void headerTable ()
@@ -27,7 +29,7 @@ public class ProductManager
     {
         headerTable();
 
-        out.printf("|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n",
+        out.printf(sequence,
                 productEntity.getProductId(),
                 productEntity.getProductName(),
                 productEntity.getManufacturerEntity() == null ? -1 : productEntity.getManufacturerEntity().getManufacturerId(),
@@ -44,7 +46,7 @@ public class ProductManager
         headerTable();
 
         for (ProductEntity pe : productEntityList) {
-            out.printf("|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n",
+            out.printf(sequence,
                     pe.getProductId(),
                     pe.getProductName(),
                     pe.getManufacturerEntity() == null ? -1 : pe.getManufacturerEntity().getManufacturerId(),

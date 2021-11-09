@@ -7,10 +7,12 @@ import static java.lang.System.out;
 public class DTOManager
 {
     private final String doubleLine;
+    private final String sequence;
 
     public DTOManager ()
     {
         this.doubleLine = "=".repeat(168);
+        this.sequence = "|%21d |%30s |%21s |%11s |%20s |%20s |%20.2f |%8d |\n";
     }
 
     private void headerTable ()
@@ -25,7 +27,7 @@ public class DTOManager
     {
         headerTable();
 
-        out.printf("|%21d |%30s |%21s |%11s |%20s |%20s |%20.2f |%8d |\n",
+        out.printf(sequence,
                 productDTO.getId(),
                 productDTO.getName(),
                 productDTO.getManufacturedDTO() == null ? -1 : productDTO.getManufacturedDTO().getName(),
@@ -44,7 +46,7 @@ public class DTOManager
 
         for (ProductDTO productDTO : productDTOList)
         {
-            out.printf("|%21d |%30s |%21s |%11s |%20s |%20s |%20.2f |%8d |\n",
+            out.printf(sequence,
                     productDTO.getId(),
                     productDTO.getName(),
                     productDTO.getManufacturedDTO() == null ? -1 : productDTO.getManufacturedDTO().getName(),

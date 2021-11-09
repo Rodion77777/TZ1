@@ -9,11 +9,13 @@ public class CountryManager
 {
     private final CountryRepositoryImpl countryRepository;
     private final String doubleLine;
+    private final String sequence;
 
     public CountryManager()
     {
         this.countryRepository = new CountryRepositoryImpl();
         this.doubleLine = "=".repeat(56);
+        this.sequence = "|%21s |%30s |\n";
     }
 
     private void headerTable ()
@@ -25,7 +27,7 @@ public class CountryManager
     public void showThis (CountryEntity countryEntity)
     {
         headerTable();
-        out.printf("|%21s |%30s |\n", countryEntity.getCountryId(), countryEntity.getCountryName());
+        out.printf(sequence, countryEntity.getCountryId(), countryEntity.getCountryName());
         out.println(doubleLine);
     }
 
@@ -33,7 +35,7 @@ public class CountryManager
     {
         headerTable();
         for (CountryEntity ce : countryEntityList) {
-            out.printf("|%21s |%30s |\n", ce.getCountryId(), ce.getCountryName());
+            out.printf(sequence, ce.getCountryId(), ce.getCountryName());
         }
         out.println(doubleLine);
     }
