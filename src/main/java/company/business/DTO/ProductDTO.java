@@ -7,14 +7,14 @@ import java.sql.Date;
 public class ProductDTO
 {
     private final long id;
-    private final java.lang.String name;
+    private final String name;
     private final Date manufacturerDate;
     private final ManufacturerDTO manufacturedDTO;
     private final String categoryDTO;
     private final double price;
     private final long count;
 
-    public ProductDTO(long id, java.lang.String name, Date manufacturerDate, ManufacturerDTO manufacturedDTO, String categoryDTO, double price, long count) {
+    public ProductDTO(long id, String name, Date manufacturerDate, ManufacturerDTO manufacturedDTO, String categoryDTO, double price, long count) {
         this.id = id;
         this.name = name;
         this.manufacturerDate = manufacturerDate;
@@ -28,7 +28,7 @@ public class ProductDTO
         return id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 
