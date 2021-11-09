@@ -8,10 +8,8 @@ import company.domain.configuration.Processors;
 import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
-import company.domain.managers.ClearManager;
+import company.domain.managers.*;
 import company.domain.repository.*;
-import company.domain.managers.SaveManager;
-import company.domain.managers.ShowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +37,17 @@ public class HibernateApplication {
 
     public void run ()
     {
-        createObjects();
-        new SaveManager().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
-        //new ShowManager().inConsole.showAllTable();
-        //new ClearManager().clearDatabase.clearAllTables();
-        //clearAllEntityList();
+        //createObjects();
+        //new SaveManager().inDatabase.saveAllEntity(countryEntityList, manufacturerEntityList, productEntityList);
+
+        new CountryManager().showDatabaseTable();
+        new ManufacturerManager().shotDatabaseTable();
+        new ProductManager().showDatabaseTable();
+
+        ProductEntity pe = productRepository.findById(180);
+        List<ProductEntity> pel = productRepository.findAll();
+        new ProductManager().showThis(pe);
+        new ProductManager().showThis(pel);
     }
 
     public void createObjects ()

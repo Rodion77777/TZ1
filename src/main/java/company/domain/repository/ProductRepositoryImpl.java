@@ -16,9 +16,7 @@ public class ProductRepositoryImpl implements ProductRepository
     @Override
     public ProductEntity findById(long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
         ProductEntity productEntity = session.get(ProductEntity.class, id);
-        transaction.commit();
         session.close();
         return productEntity;
     }
