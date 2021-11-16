@@ -1,15 +1,9 @@
 package company.domain.repository;
 
-import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface ProductRepository {
-    ProductEntity findById (long id);
-    void save (ProductEntity productEntity);
-    void update (ProductEntity productEntity);
-    void delete (ProductEntity productEntity);
-    List<ProductEntity> findAll ();
-    List<ProductEntity> findByManufacturerId (ManufacturerEntity manufacturerEntity);
-}
+@Repository
+public interface ProductRepository extends CrudRepository<ProductEntity, Long>
+{}
