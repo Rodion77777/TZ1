@@ -1,25 +1,21 @@
 package company.domain.managers;
 
-import company.domain.repository.CountryRepositoryImpl;
-import company.domain.repository.ManufacturedRepositoryImpl;
-import company.domain.repository.ProductRepositoryImpl;
-
+import company.domain.repository.CountryRepository;
+import company.domain.repository.ManufacturedRepository;
+import company.domain.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import static java.lang.System.out;
 
 public class ClearManager
 {
-    private final CountryRepositoryImpl countryRepository;
-    private final ManufacturedRepositoryImpl manufacturedRepository;
-    private final ProductRepositoryImpl productRepository;
-    public final ClearDatabase clearDatabase;
-
-    public ClearManager ()
-    {
-        countryRepository = new CountryRepositoryImpl();
-        manufacturedRepository = new ManufacturedRepositoryImpl();
-        productRepository = new ProductRepositoryImpl();
-        clearDatabase = new ClearDatabase();
-    }
+    @Autowired
+    private CountryRepository countryRepository;
+    @Autowired
+    private ManufacturedRepository manufacturedRepository;
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    public ClearDatabase clearDatabase;
 
     public class ClearDatabase
     {
@@ -36,19 +32,19 @@ public class ClearManager
 
         public void clearCountryTable ()
         {
-            countryRepository.clearCountriesTable();
+            countryRepository.deleteAll();
             out.println("\"County\" table have been cleared.");
         }
 
         public void clearManufactureTable ()
         {
-            manufacturedRepository.clearManufacturersTable();
+            manufacturedRepository.deleteAll();
             out.println("\"Manufacture\" table have been cleared.");
         }
 
         public void clearProductTable ()
         {
-            productRepository.clearProductsTable();
+            productRepository.deleteAll();
             out.println("\"Product\" table have been cleared.");
         }
     }
