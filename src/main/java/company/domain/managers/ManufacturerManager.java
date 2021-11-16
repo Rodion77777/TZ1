@@ -1,19 +1,20 @@
 package company.domain.managers;
 
 import company.domain.entity.ManufacturerEntity;
-import company.domain.repository.ManufacturedRepositoryImpl;
+import company.domain.repository.ManufacturedRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import static java.lang.System.out;
 
 public class ManufacturerManager
 {
-    private final ManufacturedRepositoryImpl manufacturedRepository;
+    @Autowired
+    private ManufacturedRepository manufacturedRepository;
     private final String doubleLine;
     private final String sequence;
 
     public ManufacturerManager ()
     {
-        this.manufacturedRepository = new ManufacturedRepositoryImpl();
         this.doubleLine = "=".repeat(79);
         this.sequence = "|%21d |%30s |%21d |\n";
     }
@@ -52,6 +53,6 @@ public class ManufacturerManager
 
     public void shotDatabaseTable ()
     {
-        showThis(manufacturedRepository.findAll());
+        showThis(manufacturedRepository.findAll().iterator().next());
     }
 }
