@@ -5,12 +5,13 @@ import company.business.DTO.components.CountryDTO;
 import company.business.DTO.components.ManufacturerDTO;
 import company.domain.entity.ProductEntity;
 import company.domain.repository.ProductRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-@Component
+@Service
 public class ProductServiceImpl implements ProductService
 {
     private ProductRepository productRepository;
@@ -23,9 +24,8 @@ public class ProductServiceImpl implements ProductService
     @Override
     public List<ProductDTO> getAllProducts()
     {
-        return productRepository
-                .findAll()
-                .stream().map(p -> new ProductDTO(
+        return StreamSupport.stream(productRepository.findAll().spliterator(), false)
+                .map(p -> new ProductDTO(
                         p.getProductId(),
                         p.getProductName(),
                         p.getProductManufacturerDate(),
@@ -44,9 +44,9 @@ public class ProductServiceImpl implements ProductService
     }
 
     @Override
-    public ProductDTO getProductDTO ()
+    public ProductDTO getProductDTOById (long id)
     {
-        ProductEntity pe = productRepository.findById(180);
+        ProductEntity pe = productRepository.findById(id).get();
 
         CountryDTO countryDTO = new CountryDTO(
                 pe.getManufacturerEntity().getCountryEntity().getCountryId(),
@@ -66,6 +66,4 @@ public class ProductServiceImpl implements ProductService
                 pe.getProductPrice(),
                 pe.getProductCount());
     }
-
-
 }
