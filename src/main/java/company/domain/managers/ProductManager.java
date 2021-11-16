@@ -1,19 +1,21 @@
 package company.domain.managers;
 
 import company.domain.entity.ProductEntity;
-import company.domain.repository.ProductRepositoryImpl;
+import company.domain.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import static java.lang.System.out;
 
 public class ProductManager
 {
-    private final ProductRepositoryImpl productRepository;
+    @Autowired
+    private ProductRepository productRepository;
     private final String doubleLine;
     private final String sequence;
 
     public ProductManager ()
     {
-        this.productRepository = new ProductRepositoryImpl();
         this.doubleLine = "=".repeat(146);
         this.sequence = "|%21d |%30s |%21s |%11s |%20s |%20.2f |%8d |\n";
     }
@@ -61,6 +63,6 @@ public class ProductManager
 
     public void showDatabaseTable ()
     {
-        showThis(productRepository.findAll());
+        showThis(productRepository.findAll().iterator().next());
     }
 }
