@@ -3,28 +3,24 @@ package company.domain.managers;
 import company.domain.entity.CountryEntity;
 import company.domain.entity.ManufacturerEntity;
 import company.domain.entity.ProductEntity;
-import company.domain.repository.CountryRepositoryImpl;
-import company.domain.repository.ManufacturedRepositoryImpl;
-import company.domain.repository.ProductRepositoryImpl;
-
+import company.domain.repository.CountryRepository;
+import company.domain.repository.ManufacturedRepository;
+import company.domain.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-
 import static java.lang.System.out;
 
 public class SaveManager
 {
-    private final CountryRepositoryImpl countryRepository;
-    private final ManufacturedRepositoryImpl manufacturedRepository;
-    private final ProductRepositoryImpl productRepository;
-    public final InDatabase inDatabase;
+    @Autowired
+    private CountryRepository countryRepository;
+    @Autowired
+    private ManufacturedRepository manufacturedRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    public SaveManager ()
-    {
-        this.countryRepository = new CountryRepositoryImpl();
-        this.manufacturedRepository = new ManufacturedRepositoryImpl();
-        this.productRepository = new ProductRepositoryImpl();
-        inDatabase = new InDatabase();
-    }
+    public InDatabase inDatabase;
+
 
     public class InDatabase
     {
