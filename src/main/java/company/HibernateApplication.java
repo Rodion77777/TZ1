@@ -1,35 +1,30 @@
 package company;
 
-import company.domain.components.Category;
-import company.domain.components.Countries;
-import company.domain.components.Manufacturers;
+import company.domain.components.*;
 import company.domain.configuration.Motherboards;
 import company.domain.configuration.Processors;
-import company.domain.entity.CountryEntity;
-import company.domain.entity.ManufacturerEntity;
-import company.domain.entity.ProductEntity;
+import company.domain.entity.*;
 import company.domain.managers.*;
 import company.domain.repository.*;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.lang.System.out;
 
-public class HibernateApplication {
-
-    private final CountryRepositoryImpl countryRepository;
-    private final ManufacturedRepositoryImpl manufacturedRepository;
-    private final ProductRepositoryImpl productRepository;
+public class HibernateApplication
+{
+    @Autowired
+    private CountryRepository countryRepository;
+    @Autowired
+    private ManufacturedRepository manufacturedRepository;
+    @Autowired
+    private ProductRepository productRepository;
     List<CountryEntity> countryEntityList;
     List<ManufacturerEntity> manufacturerEntityList;
     List<ProductEntity> productEntityList;
 
     public HibernateApplication ()
     {
-        this.countryRepository = new CountryRepositoryImpl();
-        this.manufacturedRepository = new ManufacturedRepositoryImpl();
-        this.productRepository = new ProductRepositoryImpl();
         this.countryEntityList = new ArrayList<>();
         this.manufacturerEntityList = new ArrayList<>();
         this.productEntityList = new ArrayList<>();
@@ -44,8 +39,8 @@ public class HibernateApplication {
         new ManufacturerManager().shotDatabaseTable();
         new ProductManager().showDatabaseTable();
 
-        ProductEntity pe = productRepository.findById(180);
-        List<ProductEntity> pel = productRepository.findAll();
+        ProductEntity pe = productRepository.findById(180L).get();
+        List<ProductEntity> pel = (List<ProductEntity>) productRepository.findAll();
         new ProductManager().showThis(pe);
         new ProductManager().showThis(pel);
     }
