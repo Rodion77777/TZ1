@@ -1,19 +1,21 @@
 package company.domain.managers;
 
 import company.domain.entity.CountryEntity;
-import company.domain.repository.CountryRepositoryImpl;
+import company.domain.repository.CountryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import static java.lang.System.out;
 
 public class CountryManager
 {
-    private final CountryRepositoryImpl countryRepository;
+    @Autowired
+    private CountryRepository countryRepository;
     private final String doubleLine;
     private final String sequence;
 
     public CountryManager()
     {
-        this.countryRepository = new CountryRepositoryImpl();
         this.doubleLine = "=".repeat(56);
         this.sequence = "|%21s |%30s |\n";
     }
@@ -42,6 +44,6 @@ public class CountryManager
 
     public void showDatabaseTable ()
     {
-        showThis(countryRepository.findAll());
+        showThis(countryRepository.findAll().iterator().next());
     }
 }
